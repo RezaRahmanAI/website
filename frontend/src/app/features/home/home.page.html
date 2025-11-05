@@ -1,0 +1,119 @@
+<section class="hero">
+  <div class="hero__content">
+    <p class="hero__eyebrow">Technology Services & Academy</p>
+    <h1>Elevate Your Digital Vision & Empower Your Team</h1>
+    <p class="hero__subtitle">
+      TechNova blends award-winning technology services with an elite learning academy to deliver measurable growth and future-ready skills.
+    </p>
+    <div class="hero__actions">
+      <a routerLink="/services" class="btn btn--primary">Explore Tech Services <lucide-icon [img]="ArrowRight"></lucide-icon></a>
+      <a routerLink="/courses" class="btn btn--ghost">Browse Courses</a>
+    </div>
+  </div>
+  <div class="hero__visual">
+    <div class="orb orb--one"></div>
+    <div class="orb orb--two"></div>
+    <div class="hero__stat">
+      <lucide-icon [img]="Rocket"></lucide-icon>
+      <div>
+        <strong>120+ launches</strong>
+        <span>Successful product and campaign rollouts</span>
+      </div>
+    </div>
+    <div class="hero__stat hero__stat--alt">
+      <lucide-icon [img]="GraduationCap"></lucide-icon>
+      <div>
+        <strong>3400+ learners</strong>
+        <span>Upskilled through TechNova Academy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <header class="section__header">
+    <h2>Dual Expertise. One Vision.</h2>
+    <p>From strategy to execution and learning, TechNova partners with organizations across the entire innovation lifecycle.</p>
+  </header>
+  <div class="grid grid--features">
+    <article *ngFor="let service of facade.services$ | async" class="feature-card">
+      <h3>{{ service.name }}</h3>
+      <p>{{ service.summary }}</p>
+      <a [routerLink]="['/services']" class="feature-card__cta">Discover more</a>
+    </article>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <header class="section__header">
+    <h2>Featured Courses</h2>
+    <p>High-impact programs led by senior instructors from the industry.</p>
+  </header>
+  <div class="carousel" *ngIf="facade.courses$ | async as courses">
+    <article class="course-card" *ngFor="let course of courses | slice:0:4">
+      <div class="course-card__badge">{{ course.level }}</div>
+      <h3>{{ course.title }}</h3>
+      <p>{{ course.summary }}</p>
+      <span class="course-card__meta">Duration: {{ course.duration | json }}</span>
+      <a [routerLink]="['/courses', course.id]" class="course-card__cta">View course</a>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="stats">
+    <div class="stat" *ngIf="facade.stats$ | async as stats">
+      <div>
+        <span class="stat__value">{{ stats.projects }}+</span>
+        <span class="stat__label">Projects Delivered</span>
+      </div>
+      <div>
+        <span class="stat__value">{{ stats.students }}+</span>
+        <span class="stat__label">Learners Upskilled</span>
+      </div>
+      <div>
+        <span class="stat__value">{{ stats.yearsExperience }}</span>
+        <span class="stat__label">Years Experience</span>
+      </div>
+      <div>
+        <span class="stat__value">{{ stats.satisfaction }}%</span>
+        <span class="stat__label">Client Satisfaction</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--testimonials">
+  <header class="section__header">
+    <h2>Trusted by ambitious teams</h2>
+  </header>
+  <div class="testimonials">
+    <article class="testimonial" *ngFor="let testimonial of facade.testimonials()">
+      <lucide-icon [img]="Star"></lucide-icon>
+      <p class="testimonial__quote">{{ testimonial.quote }}</p>
+      <p class="testimonial__author">{{ testimonial.author }}</p>
+      <p class="testimonial__role">{{ testimonial.role }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <header class="section__header">
+    <h2>Stay ahead with insights</h2>
+  </header>
+  <div class="blog-grid" *ngIf="facade.blogPosts$ | async as posts">
+    <article class="blog-card" *ngFor="let post of posts | slice:0:3">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.excerpt }}</p>
+      <a [routerLink]="['/blog', post.slug]">Read article</a>
+    </article>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta__content">
+    <h2>Ready to accelerate your roadmap?</h2>
+    <p>Let’s craft a technology and education strategy tailored to your goals.</p>
+    <a routerLink="/contact" class="btn btn--primary">Book a strategy call</a>
+  </div>
+</section>

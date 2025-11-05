@@ -1,0 +1,26 @@
+<section class="auth-shell">
+  <h1>Create your TechNova account</h1>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>First name</label>
+    <input type="text" formControlName="firstName">
+
+    <label>Last name</label>
+    <input type="text" formControlName="lastName">
+
+    <label>Email</label>
+    <input type="email" formControlName="email">
+
+    <label>Password</label>
+    <input type="password" formControlName="password">
+
+    <label>Role</label>
+    <select formControlName="role">
+      <option value="Student">Student</option>
+      <option value="Client">Client</option>
+    </select>
+
+    <button type="submit">Register</button>
+    <div class="error" *ngIf="error.value">{{ error.value }}</div>
+  </form>
+  <p class="muted">Already a member? <a routerLink="/auth/login">Login</a></p>
+</section>

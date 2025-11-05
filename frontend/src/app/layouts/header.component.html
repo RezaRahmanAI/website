@@ -1,0 +1,13 @@
+<header class="header" [class.header--scrolled]="menuOpen()">
+  <div class="header__logo">TechNova</div>
+  <nav class="header__nav" [class.header__nav--open]="menuOpen()">
+    <a routerLink="/" routerLinkActive="active" (click)="menuOpen.set(false)">Home</a>
+    <a routerLink="/services" routerLinkActive="active" (click)="menuOpen.set(false)">Services</a>
+    <a routerLink="/courses" routerLinkActive="active" (click)="menuOpen.set(false)">Courses</a>
+    <a routerLink="/dashboard" routerLinkActive="active" (click)="menuOpen.set(false)">Dashboard</a>
+    <a routerLink="/auth/login" class="cta" (click)="menuOpen.set(false)">Login</a>
+  </nav>
+  <button class="header__menu" type="button" (click)="toggleMenu()">
+    <lucide-icon [img]="menuOpen() ? CloseIcon : MenuIcon"></lucide-icon>
+  </button>
+</header>

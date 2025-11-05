@@ -1,0 +1,17 @@
+<section class="course-detail" *ngIf="course$ | async as course">
+  <header>
+    <a routerLink="/courses" class="back">Back to catalog</a>
+    <h1>{{ course.title }}</h1>
+    <p>{{ course.description || course.summary }}</p>
+  </header>
+  <div class="course-detail__meta">
+    <span>Level: {{ course.level }}</span>
+    <span>Duration: {{ course.duration }}</span>
+    <span *ngIf="course.price">Investment: ${{ course.price }}</span>
+  </div>
+  <section *ngIf="course.instructor">
+    <h2>Meet your instructor</h2>
+    <p>{{ course.instructor.name }} — {{ course.instructor.title }}</p>
+  </section>
+  <button class="enroll">Enroll now</button>
+</section>
