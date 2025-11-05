@@ -1,0 +1,30 @@
+<section class="contact">
+  <header>
+    <h1>Let’s build the future together</h1>
+    <p>Share your goals and we’ll orchestrate the right technology and education roadmap.</p>
+  </header>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Name</label>
+    <input type="text" formControlName="name">
+
+    <label>Email</label>
+    <input type="email" formControlName="email">
+
+    <label>Phone</label>
+    <input type="tel" formControlName="phone">
+
+    <label>Service interest</label>
+    <select formControlName="serviceInterest">
+      <option value="Digital Marketing">Digital Marketing</option>
+      <option value="Web Development">Web Development</option>
+      <option value="Mobile App Development">Mobile App Development</option>
+      <option value="Academy">Academy Enrollment</option>
+    </select>
+
+    <label>Message</label>
+    <textarea formControlName="message" rows="4"></textarea>
+
+    <button type="submit">Submit inquiry</button>
+    <p class="success" *ngIf="submitted.value">Thanks! Our consultants will reach out within 24 hours.</p>
+  </form>
+</section>

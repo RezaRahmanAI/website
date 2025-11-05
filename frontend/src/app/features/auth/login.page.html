@@ -1,0 +1,17 @@
+<section class="auth-shell">
+  <h1>Welcome back</h1>
+  <p>Login to access your personalized dashboard and learning journey.</p>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Email</label>
+    <input type="email" formControlName="email" placeholder="you@company.com">
+    <div class="error" *ngIf="form.controls.email.invalid && form.controls.email.touched">Enter a valid email.</div>
+
+    <label>Password</label>
+    <input type="password" formControlName="password" placeholder="********">
+    <div class="error" *ngIf="form.controls.password.invalid && form.controls.password.touched">Password must be 8+ characters.</div>
+
+    <button type="submit">Login</button>
+    <div class="error" *ngIf="error.value">{{ error.value }}</div>
+  </form>
+  <p class="muted">New to TechNova? <a routerLink="/auth/register">Create an account</a></p>
+</section>

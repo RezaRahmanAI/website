@@ -1,0 +1,29 @@
+<section class="services-hero">
+  <h1>Technology that drives measurable outcomes</h1>
+  <p>Partner with TechNova for strategy, design, engineering, and growth marketing tailored to ambitious teams.</p>
+</section>
+
+<section class="services-grid" *ngIf="facade.services$ | async as services">
+  <article class="service" *ngFor="let service of services">
+    <h2>{{ service.name }}</h2>
+    <p>{{ service.description || service.summary }}</p>
+    <div class="service__meta" *ngIf="service.process">
+      <h3>Our approach</h3>
+      <ul>
+        <li *ngFor="let step of service.process">{{ step }}</li>
+      </ul>
+    </div>
+    <div class="service__meta" *ngIf="service.technologies">
+      <h3>Technologies</h3>
+      <div class="chips">
+        <span class="chip" *ngFor="let tech of service.technologies">{{ tech }}</span>
+      </div>
+    </div>
+    <div class="service__meta" *ngIf="service.pricing">
+      <h3>Packages</h3>
+      <div class="chips">
+        <span class="chip" *ngFor="let tier of service.pricing">{{ tier }}</span>
+      </div>
+    </div>
+  </article>
+</section>

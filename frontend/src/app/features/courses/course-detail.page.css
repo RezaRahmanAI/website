@@ -1,0 +1,32 @@
+.course-detail {
+  padding: 4rem 3rem;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--color-secondary);
+}
+
+.course-detail__meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  color: var(--color-muted);
+}
+
+.enroll {
+  align-self: flex-start;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--color-secondary), #facc15);
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+}

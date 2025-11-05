@@ -1,0 +1,41 @@
+<section class="dashboard" *ngIf="facade.stats$ | async as stats">
+  <header>
+    <h1>Admin & Student Overview</h1>
+    <p>Unified analytics for the services division and academy.</p>
+  </header>
+  <div class="metrics">
+    <div class="metric">
+      <span class="metric__label">Clients & Students</span>
+      <span class="metric__value">{{ stats.totalUsers }}</span>
+    </div>
+    <div class="metric">
+      <span class="metric__label">Courses</span>
+      <span class="metric__value">{{ stats.totalCourses }}</span>
+    </div>
+    <div class="metric">
+      <span class="metric__label">Enrollments</span>
+      <span class="metric__value">{{ stats.totalEnrollments }}</span>
+    </div>
+    <div class="metric">
+      <span class="metric__label">Revenue</span>
+      <span class="metric__value">${{ stats.totalRevenue }}</span>
+    </div>
+  </div>
+</section>
+
+<section class="dashboard" *ngIf="facade.enrollments$ | async as dashboard">
+  <h2>Active Learning Journeys</h2>
+  <ul class="list">
+    <li *ngFor="let enrollment of dashboard.enrollments">
+      <span>{{ enrollment.courseId }}</span>
+      <span>{{ enrollment.progressStatus }}</span>
+    </li>
+  </ul>
+  <h2>Recent Notifications</h2>
+  <ul class="list">
+    <li *ngFor="let notification of dashboard.notifications">
+      <span>{{ notification.title }}</span>
+      <span>{{ notification.sentAt | date }}</span>
+    </li>
+  </ul>
+</section>
